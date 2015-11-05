@@ -1,0 +1,7 @@
+Shishir Tandale
+
+	- We will meet Sunday night (11/8) to discuss project details
+	- As of now, I'm thinking Scrum/GitHub to handle collaboration issues, and we split the project up
+		so half of us do backend exclusively and half do front end exclusively.
+	- However, let's all work on the SQL queries together so we get practice.
+
