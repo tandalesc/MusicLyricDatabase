@@ -17,45 +17,42 @@ ActiveRecord::Schema.define(version: 20151126173531) do
   enable_extension "plpgsql"
 
   create_table "albums", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "title"
+    t.integer "year"
+    t.integer "artist_id"
   end
 
   create_table "artists", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "genre_id"
+    t.integer "region_id"
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string   "type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "playlists", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "user_id"
   end
 
   create_table "producers", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "name"
+    t.integer "genre_id"
+    t.integer "region_id"
   end
 
   create_table "regions", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "name"
   end
 
   create_table "songs", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string  "title"
+    t.string  "duration"
+    t.string  "lyrics"
+    t.integer "album_id"
+    t.integer "producer_id"
   end
 
   create_table "users", force: :cascade do |t|

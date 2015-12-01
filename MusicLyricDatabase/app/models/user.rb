@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
 	                    uniqueness: { case_sensitive: false }
 	has_secure_password
 	validates :password, presence: true, length: { minimum: 6 }
+	has_many :playlists
+	has_many :favorites, :class_name => 'Song', :foreign_key => 'song_id'
 
 	  # Returns the hash digest of the given string.
   def User.digest(string)
