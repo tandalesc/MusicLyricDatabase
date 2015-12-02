@@ -1,4 +1,17 @@
-<% provide(:title, @user.name) %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Music Lyric Database</title>
+    <%= stylesheet_link_tag 'application', media: 'all',
+                                           'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+      </script>
+    <![endif]-->
+  </head>
+  <body>
     <header class="navbar navbar-fixed-top navbar-inverse">
       <div class="container">
         <%= link_to "Music Lyric Database", root_path, id: "logo" %>
@@ -21,17 +34,12 @@
         </nav>
       </div>
     </header>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        Current User: <%= @user.name %>
-      </h1>
-      <h1>Playlists:</h1>
-      <% @playlists.each do |playlist| %>
-        <h3><%= link_to playlist.name, "/playlists/#{playlist.id}" %></h3>
-      <% end %>
-      <h2><%= link_to "Create a playlist", new_playlist_path %></h2>
-    </section>
-  </aside>
-</div>
+  </body>
+ <div class="center jumbotron">
+ <h1><%= @playlist.name %></h1>
+ <% if @songs.size > 0 %>
+ <% @songs.each do |song| %>
+  <h2><%= link_to song.title, "/songs/#{song.id}" %></h2>
+  <% else %>
+  <h2>This playlist does not have any songs yet</h2>
+ <% end %>

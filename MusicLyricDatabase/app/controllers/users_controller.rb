@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+    user = User.find_by_sql("SELECT * FROM users WHERE id="+params[:id])
+  	@user = user[0]
+    @playlists = Playlist.find_by_sql("SELECT * FROM playlists WHERE user_id=#{@user.id}")
   end
 
   def create

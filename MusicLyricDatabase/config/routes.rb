@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users, :songs, :artists, :albums, :genres, :regions
+  resources :users, :songs, :artists, :albums, :genres, :regions, :playlists
   get 'results' => 'search#index'
   post 'results' => 'search#index'
 
