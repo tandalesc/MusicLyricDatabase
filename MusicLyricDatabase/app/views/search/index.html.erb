@@ -36,18 +36,64 @@
     </header>
   </body>
  <div class="center jumbotron">
-  <h1>Welcome to the Music Lyric Database</h1>
-
-  <h2>
-    This is the home page for the Music Lyric Database
-  </h2>
-  <% if !logged_in? %>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+ <% if params[:search] && (params[:search] != "")%>
+ <h1>Results</h1>
+<% if @artists.size > 0 %>
+ <h2>Artists:</h2>
+ <ul>
+ <% @artists.each do |artist| %>
+  <li>
+  <%= link_to artist.name, "/artists/#{artist.id}" %>
+  </li>
+  <%end%>
   <% else %>
-      <p><%= form_tag :controller => 'search', :action => 'index', :method => 'get' do %>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "Search" %>
-      <% end %>
-  <% end %>
-</div>
-</html>
+  <h2>No matching artists</h2>
+  <%end%>
+<% if @albums.size > 0 %>
+ <h2>Albums:</h2>
+ <ul>
+ <% @albums.each do |album| %>
+  <li>
+  <%= link_to album.title, "/albums/#{album.id}" %>
+  </li>
+  <%end%>
+  <% else %>
+  <h2>No matching albums</h2>
+  <%end%>
+<% if @songs.size > 0 %>
+ <h2>Songs:</h2>
+ <ul>
+ <% @songs.each do |song| %>
+  <li>
+  <%= link_to song.title, "/songs/#{song.id}" %>
+  </li>
+  <%end%>
+  <% else %>
+  <h2>No matching songs</h2>
+  <%end%>
+<% if @genres.size > 0 %>
+ <h2>Genres:</h2>
+ <ul>
+ <% @genres.each do |genre| %>
+  <li>
+  <%= link_to genre.name, "/genres/#{genre.id}" %>
+  </li>
+  <%end%>
+  <% else %>
+  <h2>No matching genres</h2>
+  <%end%>
+  <% if @regions.size > 0 %>
+ <h2>Regions:</h2>
+ <ul>
+ <% @regions.each do |region| %>
+  <li>
+  <%= link_to region.name, "/regions/#{region.id}" %>
+  </li>
+  <%end%>
+  <% else %>
+  <h2>No matching regions</h2>
+  <%end%>
+  <% else %>
+  <h1>No Search Entered</h1>
+ <%end%>
+ </ul>

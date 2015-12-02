@@ -20,7 +20,8 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
   resources :users, :songs, :artists, :albums, :genres, :regions
-  get 'results' => 'welcome#results'
+  get 'results' => 'search#index'
+  post 'results' => 'search#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
