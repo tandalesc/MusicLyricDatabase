@@ -19,8 +19,9 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users, :songs, :artists, :albums, :genres, :regions, :playlists
+  resources :users, :songs, :artists, :albums, :genres, :regions, :playlists, :playlists_songs
   get 'results' => 'search#index'
+  get 'songs/add/:id' => 'songs#add'
   post 'results' => 'search#index'
 
   # Example of regular route:

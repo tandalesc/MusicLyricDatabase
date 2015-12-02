@@ -40,4 +40,7 @@
   <h2>Artist: <%= link_to @artist.name, "/artists/#{@artist.id}" %></h2>
   <h2>Album: <%= link_to @album.title, "/albums/#{@album.id}" %></h2>
   <h2>Duration: <%= @song.duration %></h2>
+  <% if logged_in? %>
+  <%= link_to "Add to a playlist", "/songs/add/#{@song.id}" %>
+  <% end %>
   <p><%= @song.lyrics %></p>

@@ -36,11 +36,11 @@
     </header>
   </body>
  <div class="center jumbotron">
- <h1><%= @playlist.name %></h1>
- <% if @songs.size > 0 %>
- <% @songs.each do |song| %>
-  <h2><%= link_to song.title, "/songs/#{song.id}" %></h2>
-  <% end %>
+ <h1>Add <%=@song.title%> to which playlist?</h1>
+ <% if @playlists.size>0 %>
+  <% @playlists.each do |playlist| %>
+    <%= link_to playlist.name, playlists_songs_path(:song_id => @song.id, :playlist_id => playlist.id), :method => :post %>
+    <% end %>
   <% else %>
-  <h2>This playlist does not have any songs yet</h2>
- <% end %>
+  <h2>Please create a playlist first</h2>
+  <% end %>
