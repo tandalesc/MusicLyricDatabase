@@ -36,20 +36,10 @@
     </header>
   </body>
  <div class="center jumbotron">
- <h1><%= @genre.name %></h1>
-  <h2>Artists:</h2>
- <ul>
- <% @artists.each do |artist| %>
-  <li>
-  <%=link_to artist.name, "/artists/#{artist.id}" %>
-  </li>
- <%end%>
- </ul>
-  <h2>Producers from <%= @genre.name %>:</h2>
- <ul>
- <% @producers.each do |producer| %>
-  <li>
-  <%=link_to producer.name, "/producers/#{producer.id}" %>
-  </li>
- <%end%>
- </ul>
+ <h1><%= @producer.name %></h1>
+ <h2>Region: <%= link_to @region.name, "/regions/#{@region.id}" %></h2>
+ <h2>Genre: <%= link_to @genre.name, "/genres/#{@genre.id}" %></h2>
+ <h2> Produced: </h2>
+ <% @songs.each do |song| %>
+ <%= link_to song.title, "/songs/#{song.id}" %>
+ <% end %>

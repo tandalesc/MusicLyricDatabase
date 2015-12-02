@@ -44,4 +44,11 @@
   <%=link_to artist.name, "/artists/#{artist.id}" %>
   </li>
  <%end%>
+   <h2>Producers from <%= @region.name %>:</h2>
+ <ul>
+ <% @producers.each do |producer| %>
+  <li>
+  <%=link_to producer.name, "/producers/#{producer.id}" %>
+  </li>
+ <%end%>
  </ul>

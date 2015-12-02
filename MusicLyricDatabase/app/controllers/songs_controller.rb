@@ -9,6 +9,8 @@ class SongsController < ApplicationController
 		query = "SELECT * FROM artists WHERE id=#{@album.artist_id}"
 		artist = Artist.find_by_sql(query)
 		@artist = artist[0]
+		query = "SELECT * FROM producers INNER JOIN producers_songs ON producers.id = producers_songs.producer_id WHERE producers_songs.song_id=#{@song.id}"
+		@producers = Producer.find_by_sql(query)
 	end
 	def add
 		if logged_in?

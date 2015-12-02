@@ -5,5 +5,7 @@ class GenresController < ApplicationController
 		@genre = genre[0]
 		query = "SELECT * FROM artists WHERE genre_id=#{@genre.id}"
 		@artists = Artist.find_by_sql(query)
+		query = "SELECT * FROM producers WHERE genre_id=#{@genre.id}"
+		@producers = Producer.find_by_sql(query)
 	end
 end
