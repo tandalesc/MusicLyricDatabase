@@ -19,7 +19,8 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
-  resources :users
+  resources :users, :songs, :artists, :albums, :genres, :regions
+  get 'results' => 'welcome#results'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

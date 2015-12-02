@@ -36,20 +36,12 @@
     </header>
   </body>
  <div class="center jumbotron">
-  <h1>Welcome to the Music Lyric Database</h1>
-
-  <h2>
-    This is the home page for the Music Lyric Database
-  </h2>
-  <% if !logged_in? %>
-    <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-  <% else %>
-      <div class="input-append">
-        <%= text_field_tag :search, params[:search], class: "span2", placeholder: "Search for a song, album, or artist" %>
-        <!-- In order to have the "search" icon int the button, we need to use plain HTML instead 
-             of using a Rails form helper -->
-        <button class="btn" type="submit"><i class="icon-search">Search</i></button>
-      </div>
-  <% end %>
-</div>
-</html>
+ <h1><%= @genre.name %></h1>
+  <h2>Artists:</h2>
+ <ul>
+ <% @artists.each do |artist| %>
+  <li>
+  <%=link_to artist.name, "/artists/#{artist.id}" %>
+  </li>
+ <%end%>
+ </ul>
