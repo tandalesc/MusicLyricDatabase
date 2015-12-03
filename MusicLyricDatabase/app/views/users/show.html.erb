@@ -30,6 +30,7 @@
       <h1>Playlists:</h1>
       <% @playlists.each do |playlist| %>
         <h3><%= link_to playlist.name, "/playlists/#{playlist.id}" %></h3>
+        <h2><%= link_to "Delete Playlist", playlist_path(:playlist_id => playlist.id), :method => :delete %></h2>
       <% end %>
       <h2><%= link_to "Create a playlist", new_playlist_path %></h2>
     </section>

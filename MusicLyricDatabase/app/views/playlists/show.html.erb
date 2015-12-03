@@ -39,7 +39,9 @@
  <h1><%= @playlist.name %></h1>
  <% if @songs.size > 0 %>
  <% @songs.each do |song| %>
-  <h2><%= link_to song.title, "/songs/#{song.id}" %></h2>
+  <h3><%= link_to song.title, "/songs/#{song.id}" %></h3>
+  <h2><%= link_to "Remove", playlists_song_path(:song_id => song.id, :playlist_id => @playlist.id), :method => :delete %></h2>
+  <p></p>
   <% end %>
   <% else %>
   <h2>This playlist does not have any songs yet</h2>

@@ -18,4 +18,10 @@ class PlaylistsController < ApplicationController
 		@playlist = playlist[0]
 		@songs = Song.find_by_sql("SELECT * FROM songs INNER JOIN playlists_songs ON songs.id = playlists_songs.song_id WHERE playlists_songs.playlist_id=#{@playlist.id}")
 	end
+	def destroy
+		playlist_id = params[:playlist_id]
+		query = "DELETE FROM playlists WHERE id=#{playlist_id}"
+		ActiveRecord::Base.connection.execute(query)
+		redirect_to("/users/#{params[:id]}")
+	end
 end
